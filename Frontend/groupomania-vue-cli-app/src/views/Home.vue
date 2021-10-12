@@ -1,4 +1,7 @@
 <template>
+<div class="min-h-screen flex flex-col items-center bg-gray-900">
+    <login>couccou</login>
+  </div>
   <div class="home">
 
     <h1 class=" logo" >

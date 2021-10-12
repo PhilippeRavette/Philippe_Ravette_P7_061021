@@ -2,6 +2,8 @@ const express = require("express"); //Import du framework express pour node.js
 const helmet = require("helmet"); //Importe helmet pour sécuriser les en-têtes des requêtes
 const path = require('path'); //Permet d'accéder aux chemins d'accès des fichiers
 const xssClean = require("xss-clean");
+const db = require("./db")
+
 require('dotenv').config(); //Permet de créer un environnement de variables
 
 //const sauceRoutes = require('./routes/sauce'); //Importe le routeur pour les sauces
