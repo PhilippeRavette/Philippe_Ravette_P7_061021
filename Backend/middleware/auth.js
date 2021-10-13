@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken"); // On a besoin du package jwt //
 require("dotenv").config();
 
 module.exports = (req, res, next) => {

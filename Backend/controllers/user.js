@@ -1,144 +1,117 @@
-const bcrypt = require('bcrypt'); // Importation du package de chiffrement bcrytp
-const jwt = require('jsonwebtoken'); // Importation du package jsonwebtoken
-const User = require('../models/user'); // Importation modèle User
-const fs = require('fs'); // 
-const Utils = require('../libs/utils.js');
+const bcrypt = require('bcrypt'); // Hashage de passwords //
+const jwt = require('jsonwebtoken'); // Sécurisation de la connection grâce à des tokens uniques //
 
-// Inscription
+const { User } = require('../models/user'); // Importation du modèle User //
+
+// Regex
+const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}/;
+const regexPassword = /^(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+// Exportation des fonctions //
+// Fonction signup, sauvegarde d'un nouvel utilisateur //
 exports.signup = (req, res, next) => {
-    bcrypt.hash(req.body.password, 10) // On appelle la fonction de hachage, on créer un nouvel utilisateur, on le sauvegarde dans la BDD
-        .then(hash => {
-            const user = new User({
-                pseudo: req.body.pseudo,
-                email: req.body.email,
-                password: hash,
-                isActive: true,
-            });
-            User.create(user, (err, data) => {
-                if (err) {
-                    return res.status(400).json({ message: 'Impossible de créer l\'utilisateur' });
-                }
-                res.send(data);
-            })
+    if (req.body.email == null || req.body.password == null || req.body.lastname == null || req.body.firstname == null) {
+        return res.status(400).json({ 'error': 'Données incomplètes' });
+    }
+    if (!regexEmail.test(req.body.email)) {
+        return res.status(400).json({ 'error': 'Email non validé' });
+    }
+    if (!regexPassword.test(req.body.password)) {
+        return res.status(400).json({ 'error': 'Mot de passe non validé' });
+    }
+    User.findOne({
+            attributes: ['email'],
+            where: { email: req.body.email }
+        }) //Vérification si un utilisateur corresponde déjà à l'email de la DB//
+        .then((user) => {
+            if (!user) {
+                bcrypt.hash(req.body.password, 10) //Fonction pour hasher un mot de passe fonction async//
+                    .then(hash => {
+                        console.log(hash)
+                        const signUser = User.create({
+                                email: req.body.email,
+                                password: hash,
+                                lastname: req.body.lastname,
+                                firstname: req.body.firstname,
+                                jobtitle: req.body.jobtitle,
+                                isAdmin: req.body.isAdmin
+                            })
+                            .then((user) => {
+                                console.log(user)
+                                res.status(201).json({ message: 'Utilisateur créé !' })
+                            });
+                    })
+                    .catch(error => res.status(400).json({ error }));
+            }
+        })
+
+    .catch(error => res.status(500).json({ 'error': 'Utilisateur déjà existant' }));
+};
+
+// Fonction login //
+exports.login = (req, res, next) => {
+    User.findOne({ where: { email: req.body.email } })
+        .then(user => {
+            if (!user) {
+                return res.status(401).json({ error: 'Utilisateur inconnu !' });
+            }
+            bcrypt.compare(req.body.password, user.password)
+                .then(valid => {
+                    if (!valid) {
+                        return res.status(401).json({ error: 'Mot de passe incorrect !' });
+                    }
+                    res.status(200).json({ // Si comparaison ok, on renvoit un objet JSON contenant //
+                        userId: user.id, // L'userId + //
+                        token: jwt.sign( // Un token - Fonction sign de JsonWebToken//
+                            { userId: user.id }, // 1er argument : données à encoder //
+                            'RANDOM_TOKEN_SECRET', // 2ème : clé secréte encodage //
+                            { expiresIn: '24h' } // 3 :argument de configuration //
+                        ),
+                        isAdmin: user.isAdmin // Rajout Admin //
+                    });
+                })
+                .catch(error => res.status(500).json({ error }));
+        })
+
+    .catch(error => res.status(500).json({ error }));
+};
+
+
+// Suppression d'un compte //
+exports.deleteAccount = (req, res, next) => {
+    User.findOne({ where: { id: req.params.id } })
+        .then((user) => {
+            User.destroy({ where: { id: req.params.id } }) // Méthode //
+                .then(() => res.status(200).json({ message: 'Compte supprimé' }))
+                .catch(error => res.status(400).json({ error }));
         })
         .catch(error => res.status(500).json({ error }));
 };
 
-// Connexion
-exports.login = (req, res, next) => {
-    User.findOneByEmail(req.body.email, (err, result) => {
-        if (err) {
-            return res.status(400).json({ message: 'Utilisateur non trouvé' });
-        }
-
-        if (!result.isActive) {
-            return res.status(400).json({ message: 'Utlisateur trouvé mais désactivé' });
-        }
-
-        bcrypt.compare(req.body.password, result.password)
-            .then(valid => {
-                if (!valid) {
-                    return res.status(401).json({ message: 'Mot de passe invalide' })
-                } else {
-                    let payload = {
-                        'userId': result.id,
-                        'isAdmin': !!result.isAdmin
-                    };
-                    let profile = result.profilPic;
-                    if (!result.profilPic) {
-                        profile = ''
-                    }
-                    res.status(200).json({
-                        pseudo: result.pseudo,
-                        userId: result.id,
-                        profilPic: profile,
-                        isAdmin: result.isAdmin,
-                        isActive: result.isActive,
-                        token: jwt.sign(
-                            payload,
-                            `${process.env.JWT_KEY}`, { expiresIn: '24h' }
-                        )
-                    })
-                }
-            })
-            .catch(error => res.status(500).json({ error: "Erreur serveur" }));
-    })
+// Obtention d'un compte //
+exports.getOneAccount = (req, res, next) => {
+    User.findOne({ where: { id: req.params.id } })
+        .then((user) => res.status(200).json(user))
+        .catch(error => res.status(404).json({ error }));
 };
 
-// Récupérer tous les utilisateurs
-exports.getAllUsers = (req, res, next) => {
-    User.findAll((err, result) => {
-        if (err) {
-            return res.status(404).json({ message: 'Utilisateurs non trouvés' });
-        } else {
-            res.status(200).json(result)
-        }
-    })
-};
-
-// Réupérer un seul user
-exports.getOneUser = (req, res, next) => {
-    let id = req.body.userId
-    User.findOneById(id, (err, result) => {
-        if (err) {
-            return res.status(404).json({ message: 'Utilisateur non trouvé' });
-        } else {
-            res.status(200).json(result)
-        }
-    })
-};
-
-// Mofifier un pseudo
-exports.updateOneUserPseudo = (req, res, next) => {
-    let myToken = Utils.getReqToken(req);
-    // check pas d'usurpation de user_id
-    if ((!myToken.isAdmin) && (myToken.userId != req.params.id)) {
-        return res.status(401).json({ message: 'Non authorisé' });
-    }
-    let user = {
-        'id': req.params.id,
-        'pseudo': req.body.pseudo,
-    }
-    User.modifyPseudo(user, (err, result) => {
-        if (err) {
-            return res.status(400).json({ message: 'Modification non effectuée' });
-        }
-        res.status(201).json({
-            pseudo: result.pseudo
+// Modification d'un compte //
+exports.modifyAccount = (req, res, next) => {
+    User.findOne({ where: { id: req.params.id } })
+        .then((user) => {
+            lastname = req.body.lastname;
+            firstname = req.body.firstname;
+            jobtitle = req.body.jobtitle;
+            User.update()
+                .then(() => res.status(201).json({ message: 'Compte modifié !' }))
+                .catch(error => res.status(400).json({ error }));
         })
-    })
+        .catch(error => res.status(500).json({ error }));
 };
 
-// Mofifier une profilPic
-exports.updateOneUserFile = (req, res, next) => {
-    let myToken = Utils.getReqToken(req);
-    // check pas d'usurpation de user_id
-    if ((!myToken.isAdmin) && (myToken.userId != req.params.id)) {
-        return res.status(401).json({ message: 'Non authorisé' });
-    }
-
-    let user = {
-        'id': req.params.id,
-        'profilPic': req.file ? req.file.filename : null,
-    }
-    User.modifyProfilPic(user, (err, result) => {
-        if (err) {
-            return res.status(400).json({ message: 'BACK Modification non effectuée' });
-        }
-        res.status(201).json({
-            profilPic: req.file.filename,
-        });
-    });
-};
-
-// Supprimer un user
-exports.deactivateUser = (req, res, next) => {
-    User.deactivate(req.params.id, (err, result) => {
-        if (err) {
-            return res.status(400).json({ message: 'Impossible de supprimer l\'utilisateur' });
-        }
-        res.status(204).json({
-            message: 'Utilisateur correctement supprimé'
-        })
-    })
+exports.getAllAccounts = (req, res, next) => {
+    User.findAll()
+        .then((users) => res.status(200).json(users))
+    console.log(users)
+        .catch(error => res.status(400).json({ error }));
 };
