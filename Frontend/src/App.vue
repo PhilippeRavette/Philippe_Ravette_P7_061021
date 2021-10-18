@@ -2,7 +2,7 @@
   <div id="app">
     
     <header>
-        <img src="./assets/images/icon-left-font2.png" id="logoconnect" alt="Logo Groupomania Connect" />
+        <img src="./assets/iconwhite.png" id="logoconnect" alt="Logo Groupomania" />
     </header>
     <router-view></router-view>
 
@@ -20,14 +20,13 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%; 
-  background-color:blue;
 }
 #app {
   height: 100%;
   font-family: 'Montserrat', sans-serif;
 }
 header {
-  background-image: url("./assets/head.jpg"); 
+  background-image: url("assets/head.jpg");
   background-size: cover;
   width: 100%;
   height: 100px;
@@ -42,13 +41,14 @@ header {
 }
 header a{
   text-decoration: none;
-  color: white;
+  color: red;
   margin: auto;
 }
 header img {
-  width: 22%;
+  width: 30%;
   margin: auto;
 }
+
 @media screen and (max-width: 768px) {
   header img {
     width: 35%;
