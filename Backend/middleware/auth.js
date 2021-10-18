@@ -1,19 +1,21 @@
-const jwt = require("jsonwebtoken"); // On a besoin du package jwt //
-require("dotenv").config();
+const jwt = require('jsonwebtoken'); // On a besoin du package jwt //
 
-module.exports = (req, res, next) => {
+module.exports = (req, res, next) => { // On exporte un middleware //
     try {
-        const token = req.headers.authorization.split(" ")[1]; //On extrait le token de la requête
-        const decodedToken = jwt.verify(token, process.env.JWT_SECRET_TOKEN); //On décrypte le token grâce à la clé secrète
-        const userId = decodedToken.userId; //On récupère l'userId du token décrypté
-        if (req.body.userId && req.body.userId !== userId) {
-            throw "Invalid user ID"; //Renvoie une erreur si l'id décodé de la requête ne correspond pas l'id de l'utilisateur
+        console.log(req.headers)
+        const token = req.headers.authorization.split(' ')[1]; // Récupération du token dans le header dans un tableau split et on retourne le 2ème élément //
+        console.log(token)
+        const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET'); // On décode le token, la clé doit correspondre à celle de la fontion login //
+        console.log(decodedToken)
+        const userId = decodedToken.userId; // On récupére l'userId //
+        console.log(userId)
+        req.decodedToken = decodedToken
+        if (req.body.userId && req.body.userId !== userId) { // Si l'userId du corps de la requête est différent de userId //
+            throw 'User ID non valable'; // Throw pour renvoyer l'erreur //
         } else {
-            next(); //Sinon, l'authentification est réussie et la suite du code peut s'exécuter
+            next();// Tout est ok donc, on passe au prochain middleware //
         }
-    } catch (err) {
-        res.status(401).json({
-            error: new Error("Unauthorized request!"),
-        });
+    } catch(error) {
+        res.status(401).json({ error });
     }
 };

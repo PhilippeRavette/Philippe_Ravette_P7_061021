@@ -1,4 +1,4 @@
-const { Message } = require('../models/message');
+const { Message } = require('../models/index');
 
 // Création d'un message //
 exports.createMessage = (req, res, next) => {

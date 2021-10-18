@@ -1,54 +1,33 @@
-const express = require("express"); //Import du framework express pour node.js
-const helmet = require("helmet"); //Importe helmet pour sécuriser les en-têtes des requêtes
-const path = require('path'); //Permet d'accéder aux chemins d'accès des fichiers
-const xssClean = require("xss-clean");
-
-require('dotenv').config(); //Permet de créer un environnement de variables
-
-//const sauceRoutes = require('./routes/sauce'); //Importe le routeur pour les sauces
-//const userRoutes = require('./routes/user'); //Importe le routeur pour les utilisateurs
+const express = require('express');
 const bodyParser = require('body-parser');
-const rateLimit = require("express-rate-limit");
+const path = require('path');
+const helmet = require('helmet');
 
-const app = express(); //Applique le framework express
+// Importation des routeurs //
+const userRoutes = require("./routes/user"); // Importation de la route user //
+const messageRoutes = require("./routes/message"); // Importation de la route message //
+const answerRoutes = require("./routes/answer"); // Importation de la route answer //
 
-//Définit les paramètres d'en-tête
+
+
+
+const app = express();
+
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*"); //Permet l'accès à l'API depuis n'importe quelle origine
-    res.setHeader(
-        //Autorise les en-têtes spécifiés
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
-    );
-    res.setHeader(
-        //Permet l'utilisation des méthodes définies ci-dessous
-        "Access-Control-Allow-Methods",
-        "GET, POST, PUT, DELETE, PATCH, OPTIONS"
-    );
-    res.setHeader('Content-Security-Policy', "default-src 'self'");
+    res.setHeader('Access-Control-Allow-Origin', '*'); // On accéde à l'API depuis diverses origines //
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS'); // Liste requêtes autorisées //
     next();
 });
 
+app.use(bodyParser.json()); // App requiert BodyParser //
+app.use(helmet());
+app.use('/images', express.static(path.join(__dirname, 'images'))); // Pour toute requête envoyée à /images/, on sert ce dossier statique image //
 
-app.use(helmet()); //Applique les sous-plugins de helmet
+// Enregistrement des routeurs //
+app.use('/api/auth', userRoutes);
+app.use('/api/messages', messageRoutes); 
+app.use('/api/answers', answerRoutes); 
 
-//Permet de récupérer le corps de la requête au format json
-app.use(express.json());
 
-//Transforme les données arrivant des requêtes POST en objet JSON
-app.use(bodyParser.json());
-
-//Nettoie les champs utilisateurs des tentatives d'injection de code commençant par "$" ou "."
-//app.use(mongoSanitize());
-
-//Protection contre les attaques XSS
-app.use(xssClean());
-
-app.use('/images', express.static(path.join(__dirname, 'images'))); //Permet de servir les fichiers statiques présents dans le dossier images
-
-//app.use('/api/sauces', sauceRoutes); //Sert les routes concernant les sauces pour toute demande vers le endpoint /api/sauces
-//app.use('/api/auth', userRoutes); //Sert les routes concernant les utilisateurs pour toute demande vers le endpoint /api/auth
-
-app.use(rateLimit());
-
-module.exports = app;
+module.exports = app; // On exporte app //

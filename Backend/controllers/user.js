@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt'); // Hashage de passwords //
 const jwt = require('jsonwebtoken'); // Sécurisation de la connection grâce à des tokens uniques //
 
-const { User } = require('../models/user'); // Importation du modèle User //
+const { User } = require('../models/index'); // Importation du modèle User //
 
 // Regex
 const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}/;
