@@ -5,31 +5,31 @@
             <form v-on:submit.prevent="signup" id="form-signup" >
               <div class="form-group">
                 <label for="lastname">Nom :</label>
-                <input type="text" id="lastname" name="lastname" class="form-control" required 
+                <input type="text" id="lastname" name="lastname" class="form-control w-50" required 
                 pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="inputSignup.lastname"/>
               </div>
               <div class="form-group">
                 <label for="firstname">Prénom :</label>
-                <input type="text" id="firstname" name="firstname" class="form-control" required 
+                <input type="text" id="firstname" name="firstname" class="form-control w-50" required 
                 pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="inputSignup.firstname"/>
               </div>
               <div class="form-group">
                 <label for="jobtitle">Fonction :</label>
-                <input type="text" id="jobtitle" name="jobtitle" class="form-control" required
+                <input type="text" id="jobtitle" name="jobtitle" class="form-control w-50" required
                 pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="inputSignup.jobtitle"/>
               </div> 
               <div class="form-group">
                 <label for="email">E-mail :</label>
-                <input type="email" id="email" name="email" class="form-control" required 
+                <input type="email" id="email" name="email" class="form-control w-50" required 
                 pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" v-model="inputSignup.email"/>
               </div>
               <div class="form-group">
                 <label for="password">⚠️ Mot de passe :</label>
-                <input type="password" id="password" name="password" class="form-control" required
+                <input type="password" id="password" name="password" class="form-control w-50" required
                 pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" v-model="inputSignup.password"/>
               </div>  
               <p>⚠️ Minimum 8 caractères dont 1 Majuscule, 1 minuscule et un chiffre</p>
-              <button>Connect</button>                                       
+              <button>S' Enregistrer</button>                                       
             </form> 
              
               <nav class="navlogsign"><p>Vous avez déjà un compte ? <router-link to="/">Connectez-vous</router-link></p></nav> 
@@ -96,16 +96,16 @@ form {
 	margin-top: 25px;
 }
 button {
-  width: 120px;
-  height: 40px;
+  width: 50%;
   box-shadow: inset 0px 0px 0px 4px white;
   border: 6px solid #d44c5c;
   border-radius: 30px;
   padding: 10px;
-  font-family: 'Press Start 2P', cursive;  
-  margin: 15px 0px 25px 0px;
+  font-weight:700;  
+  margin: 100px 0px 25px 0px;
   background-color: white;
   color: #0c2444;
+  font-size:25px
 }
 button:hover {
   transform: scale(1.15);
@@ -119,6 +119,7 @@ label {
   text-align: right; 
   font-size: 1.5em;
   margin: auto;
+  color:red
   
 }
 input, textarea {
@@ -143,7 +144,7 @@ input:focus, textarea:focus {
   margin: auto;
  }
 .blocsignup {
-  color: white;
+  color: black;
   margin: auto;
   width: 60%; 
 	opacity: 0.95;
@@ -152,14 +153,13 @@ input:focus, textarea:focus {
   border: 6px solid #d44c5c;
   border-radius: 30px;
   text-align: center;
-  margin-top: 20px;
-  background-image: url("../assets/groupback.jpg");
+  margin-top: 75px;
+  background-image: url("../assets/pause-cafe.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  align-items: center;
-}
+  }
 .blocsignup p, .blocsignup h2 {
-	color: white;
+	color: black;
   padding: 0 15px 0 15px;
 }
 .navlogsign {
@@ -167,12 +167,11 @@ input:focus, textarea:focus {
   width: 100%;
 }
 .navlogsign a {
-  color: white;
-  font-family: 'Press Start 2P', cursive; 
-  font-size: 0.75em;
+  color: black;
+  font-size: 1em;
 }
 .navlogsign a:hover, .navlogsign a:focus {
-  color: #d44c5c;
+  color: orange;
 }
 @media screen and (max-width: 768px) {
     .blocsignup {

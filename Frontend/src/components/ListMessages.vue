@@ -147,7 +147,7 @@ h4 {
 }
 .blocmessage {
   width: 90%;
-  margin: 0 auto;
+  margin-top:20px;
   border-radius: 30px; 
   border: 6px solid grey;
   box-sizing: content-box;

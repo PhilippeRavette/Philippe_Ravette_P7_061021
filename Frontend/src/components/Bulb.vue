@@ -1,14 +1,15 @@
 <template>
         <nav id="bulb">
             <i class="far fa-lightbulb"></i>
-            <a target="_blank" href="https://www.nytimes.com">NY Times</a> 
-            <a target="_blank" href="https://www.lemonde.fr/">Le Monde</a> 
-            <a target="_blank" href="https://www.mediapart.fr">Mediapart</a>
-            <a target="_blank" href="https://www.ouest-france.fr/">Ouest FR</a>  
-            <a target="_blank" href="https://www.kaakook.fr/">kaakook</a>
+            <a target="_blank" href="https://www.facebook.com">Facebook</a> 
+            <a target="_blank" href="https://www.twitter.com/">Twitter</a> 
+            <a target="_blank" href="https://www.instagram.com">instagram</a> 
+            <a target="_blank" href="https://www.leparisien.fr/">Le Parisien</a>  
+            <a target="_blank" href="https://www.lequipe.fr/">L'Equipe</a>
             <a target="_blank" href="https://www.proverbes-citations.com/">Proverbes</a>            
-            <a target="_blank" href="https://www.poetica.fr/">Poetica</a> 
-            <a target="_blank" href="https://www.tumblr.com/explore/trending">tumblr</a> 
+            <a target="_blank" href="https://www.ligue1.fr/">Ligue 1</a> 
+            <a href="mailto:admin.groupomania@groupomania.com">Contact</a>
+           
         </nav>
 </template>
 
@@ -30,10 +31,10 @@ export default {
     right: 1%;
     margin: auto;
     box-shadow: inset 0px 0px 0px 4px white;
-    border: 6px solid #d44c5c;
+    border: 6px solid blue;
     border-radius: 30px;
     padding: 15px;
-    background-color:#0c2444;
+    background-color:red;
     opacity: 0.95;
     margin-top: 25px;
     margin-right: 25px;
@@ -43,6 +44,10 @@ export default {
     margin: auto;
     cursor: pointer;
 }
+
+#bulb a:hover{
+color:orange}
+
 #bulb p {
     font-size: 2em;
     margin: 0;

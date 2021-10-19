@@ -2,7 +2,7 @@
   <div id="app">
     
     <header>
-        <img src="./assets/iconwhite.png" id="logoconnect" alt="Logo Groupomania" />
+        <img src="./assets/iconwhite.jpg" id="logoconnect" alt="Logo Groupomania" />
     </header>
     <router-view></router-view>
 
@@ -20,14 +20,13 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%; 
+  background-image: url("assets/reseau-social.jpg");
 }
 #app {
   height: 100%;
   font-family: 'Montserrat', sans-serif;
 }
 header {
-  background-image: url("assets/head.jpg");
-  background-size: cover;
   width: 100%;
   height: 100px;
   display: flex;

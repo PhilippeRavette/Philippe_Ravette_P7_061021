@@ -2,7 +2,7 @@
         <div>    
             <!-- Répondre  -->
             <div class="blocanswer">
-                <textarea type="text" id="content" name="content" rows="2" class="form-control" v-model="content" 
+                <textarea type="text" id="content" name="content" rows="2" class="form-control mt-3" v-model="content" 
                 placeholder="Insérer votre nom puis votre commentaire svp..."></textarea>
                 <a v-on:click="createAnswer()"><i class="far fa-paper-plane" title="Envoyer"></i></a>          
             </div>
@@ -126,6 +126,7 @@ h4 {
   font-size: 1.75em;
   padding-right: 25px;
   text-shadow: -3px 0 3px #d44c5c, 0 3px 3px  #d44c5c, 3px 0 3px  #d44c5c, 0 -3px 15px  #d44c5c;
+  margin-left:15px
 }
 .blocanswer textarea:focus {
   border-color: white;

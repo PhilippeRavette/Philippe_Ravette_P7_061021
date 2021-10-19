@@ -1,10 +1,10 @@
 <template>
         <nav id="navbar">
-            <router-link to="/message" title="Rédiger un message"><i class="fas fa-pencil-alt"></i></router-link> 
-             <router-link to="/list" title="Liste des messages"><i class="fas fa-globe"></i></router-link>
-            <router-link to="/account" title="Votre compte"><i class="far fa-address-card"></i></router-link>
+            <router-link to="/message" title="Rédiger un message"><i class="far fa-edit"></i></router-link> 
+             <router-link to="/list" title="Liste des messages"><i class="far fa-envelope"></i></router-link>
+            <router-link to="/account" title="Votre compte"><i class="fas fa-user"></i></router-link>
             <router-link to="/infos" title="Informations"><i class="fas fa-cog"></i></router-link>
-            <router-link to="/" title="Informations"><i @click="deconnect" class="fas fa-door-open" title="Déconnexion"></i></router-link>
+            <router-link to="/" title="Informations"><i @click="deconnect" class="fa fa-sign-out" title="Déconnexion"></i></router-link>
         </nav>
 </template>
 
@@ -29,7 +29,7 @@ export default {
     position: fixed;
     margin: auto;
     box-shadow: inset 0px 0px 0px 10px white;
-    border: 8px solid #d44c5c;
+    border: 8px solid blue;
     border-radius: 30px;
     padding: 15px;
     background-color:red;

@@ -3,8 +3,8 @@
         <Navbar></Navbar>
         
           <div class="blocsignup">
-			<h1>"Carpe Diem : Profitez du jour présent mes amis, que votre vie soit extraordinaire."</h1> 
-            <p> - Philibert Groupeau (1913-1997), fondateur de la société Groupomania.</p>                
+			<h1>"Profitez du jour présent mes amis, que votre vie soit extraordinaire."</h1> 
+                            
           </div> 
 
           <ListMessages/> 
