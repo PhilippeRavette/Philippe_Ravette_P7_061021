@@ -15,11 +15,11 @@
               <h5 class="pmessage"><i class="fas fa-angle-right"></i>"  {{ message.content }} "</h5>
           </div>  
           <div class="blocactions">
-                <button v-if="message.Id == userId || isAdmin == true" 
+                <button v-if="message.userId == userId || isAdmin == true" 
                 type="button" @click="deleteMessage(message.id)" class="accountbutton">Supprimez </button>
           </div>
        
-        <Answers :messageId="message.id" :messageUserId="message.Id" />
+        <Answers :messageId="message.id" :messageUserId="message.userId" />
       </div>   
   </div>
 
