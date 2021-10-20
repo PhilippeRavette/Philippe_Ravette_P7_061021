@@ -6,7 +6,7 @@
           <div class="blocauthor">
               <h3><i class="far fa-user-circle"></i> {{ message.firstname }} {{ message.lastname }} </h3>
               <div class="blocjob">  
-                  <p><i class="far fa-building"></i> {{ message.jobtitle }} </p>  
+                  <p><i class="fas fa-user-tie"></i> {{ message.jobtitle }} </p>  
                   <p><i class="far fa-clock"></i> {{ message.createdAt | moment("DD.MM.YY HH:mm") }} </p>
               </div>
           </div>
