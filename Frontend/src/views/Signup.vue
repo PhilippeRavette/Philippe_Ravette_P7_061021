@@ -119,7 +119,7 @@ label {
   text-align: right; 
   font-size: 1.5em;
   margin: auto;
-  color:red
+  color:blue
   
 }
 input, textarea {
@@ -144,7 +144,7 @@ input:focus, textarea:focus {
   margin: auto;
  }
 .blocsignup {
-  color: black;
+  color: white;
   margin: auto;
   width: 60%; 
 	opacity: 0.95;
@@ -159,7 +159,7 @@ input:focus, textarea:focus {
   background-size: cover;
   }
 .blocsignup p, .blocsignup h2 {
-	color: black;
+	color: white;
   padding: 0 15px 0 15px;
 }
 .navlogsign {
@@ -167,7 +167,6 @@ input:focus, textarea:focus {
   width: 100%;
 }
 .navlogsign a {
-  color: black;
   font-size: 1em;
 }
 .navlogsign a:hover, .navlogsign a:focus {

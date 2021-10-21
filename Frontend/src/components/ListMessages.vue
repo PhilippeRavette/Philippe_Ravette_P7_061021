@@ -54,7 +54,7 @@ export default {
             method: "GET",
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem("token"),
-            }
+           }
         };
         fetch(url, options)
             .then(response => response.json())

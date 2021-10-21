@@ -5,8 +5,8 @@
             <div class="blocsignup">
                 <h2>Gestion du compte de {{ userAccount.firstname }} {{ userAccount.lastname }}</h2>
                 <p>Vous êtes inscrit depuis le <span>{{ userAccount.createdAt | moment("DD.MM.YY") }}</span> en tant que {{ userAccount.jobtitle }}.</p>
-                <button @click="deleteAccount" class="accountbutton">Supprimez votre compte</button>  
-            </div>  
+                <button @click="deleteAccount" class="accountbutton">Supprimez votre compte</button> 
+            </div>     
      </section>
 </template>
 
