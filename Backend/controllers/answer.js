@@ -18,21 +18,21 @@ exports.getAllAnswers = (req, res, next) => {
             where: { messageId: req.params.id },
             //include: ["user", "messages"]
         })
-        .then((answers) => res.status(200).json(answers))
+        .then((Answers) => res.status(200).json(Answers))
         .catch(error => res.status(400).json({ error }));
 };
 
 // Obtention d'une réponse //
 exports.getOneAnswer = (req, res, next) => {
     Answer.findOne({ where: { id: req.params.id } })
-        .then((answer) => res.status(200).json(message))
+        .then((Answer) => res.status(200).json(Answer))
         .catch(error => res.status(404).json({ error }));
 };
 
 // Suppression d'une réponse //
 exports.deleteAnswer = (req, res, next) => {
     Answer.findOne({ where: { id: req.params.id } }) // On trouve l'objet dans la base de données //
-        .then((answer) => {
+        .then((Answer) => {
             Answer.destroy({ where: { id: req.params.id } }) // Méthode //
                 .then(() => res.status(200).json({ message: 'Réponse supprimée' }))
                 .catch(error => res.status(400).json({ error }));

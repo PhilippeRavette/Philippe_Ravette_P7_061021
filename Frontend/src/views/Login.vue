@@ -57,7 +57,7 @@ export default {
                         localStorage.setItem("isAdmin", res.isAdmin);
                         console.log(localStorage)
                         this.$router.push("message");
-                        alert(" 🙋‍♂️ Bienvenue sur Groupomania Connect ! Connectez-vous dès à présent ! 🙋‍♀️");
+                        alert(" 🙋‍♂️ Bienvenue sur le réseau social de Groupomania! Connectez-vous dès à présent ! 🙋‍♀️");
                     } else {
                         alert(" 🚨 Mot de passe incorrect ! ");
                     }

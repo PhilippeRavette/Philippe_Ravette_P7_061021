@@ -1,7 +1,7 @@
 <template>
      
           <div class="blocsignup">          
-            <h2>Pour rejoindre la communauté, merci de remplir ce formulaire</h2>
+            <h1>Pour rejoindre la communauté, merci de remplir ce formulaire</h1>
             <form v-on:submit.prevent="signup" id="form-signup" >
               <div class="form-group">
                 <label for="lastname">Nom :</label>
@@ -80,7 +80,7 @@ export default {
                     localStorage.setItem("token", res.token);
                     console.log(localStorage)
                     this.$router.push("/");
-                    alert(" 🙋‍♂️ Bienvenue sur Groupomania Connect ! Connectez-vous dès à présent ! 🙋‍♀️");
+                    alert(" 🙋‍♂️ Bienvenue sur le réseau social de Groupomania ! Connectez-vous dès à présent ! 🙋‍♀️");
 
                     /*} */
                 })

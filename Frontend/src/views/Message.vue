@@ -3,7 +3,7 @@
          <Navbar></Navbar>
           <Bulb></Bulb>
           <div class="blocsignup">          
-            <h2>Exprimez-vous ! Partagez !</h2>
+            <h1>Exprimez-vous ! Partagez !</h1>
             <form id="form-signup" >
               <div class="form-group">
                 <label for="title">Titre du message :</label>

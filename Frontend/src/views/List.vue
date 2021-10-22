@@ -3,7 +3,7 @@
         <Navbar></Navbar>
         
           <div class="blocsignup">
-			<h1>"Profitez du jour présent mes amis, que votre vie soit extraordinaire."</h1> 
+			<h1>"Profitons de notre maginifique réseau social pour améliorer notre communication."</h1> 
                             
           </div> 
 
