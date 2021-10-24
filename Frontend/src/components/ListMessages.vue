@@ -4,9 +4,9 @@
      <!-- Liste des messages -->   
       <div v-for="message in messages" :key="message.id" class="bloclist">
           <div class="blocauthor">
-              <h3><i class="far fa-user-circle"></i> {{ message.user.firstname }} {{ message.user.lastname }} </h3>
+              <h3><i class="far fa-user-circle"></i> {{ message.firstname }} {{ message.lastname }} </h3>
               <div class="blocjob">  
-                  <p><i class="fas fa-user-tie"></i> {{ message.user.jobtitle }} </p>  
+                  <p><i class="fas fa-user-tie"></i> {{ message.jobtitle }} </p>  
                   <p><i class="far fa-clock"></i> {{ message.createdAt | moment("DD.MM.YY HH:mm") }} </p>
               </div>
           </div>

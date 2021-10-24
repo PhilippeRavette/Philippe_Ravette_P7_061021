@@ -11,9 +11,15 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            this.belongsTo(models.User, { foreignKey: 'userId' });
+            this.hasMany(models.Answer);
         }
     };
     Message.init({
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true
+        },
         userId: DataTypes.INTEGER,
         title: DataTypes.STRING,
         content: DataTypes.TEXT
