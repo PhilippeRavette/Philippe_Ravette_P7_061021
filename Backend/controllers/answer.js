@@ -1,4 +1,4 @@
-const { Answer } = require('../models/answer');
+const { Answer } = require('../models/index');
 
 // Création d'une réponse //
 exports.createAnswer = (req, res, next) => {
