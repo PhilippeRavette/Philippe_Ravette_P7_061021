@@ -2,7 +2,7 @@
         <div>    
             <!-- Répondre  -->
             <div class="blocanswer">
-                <textarea type="text" id="content" name="content" rows="2" class="form-control mt-3" v-model="content" 
+                <textarea type="text" id="content" name="content" rows="2" class="form-control mt-3" v-model="content"  
                 placeholder="Insérer votre nom puis votre commentaire svp..."></textarea>
                 <a v-on:click="createAnswer()"><i class="far fa-paper-plane" title="Envoyer"></i></a>          
             </div>
@@ -10,7 +10,7 @@
         <!-- Liste des réponses  -->
                 <div> 
                     <div v-for="answer in answers" :key="answer.id" class="blocanswers" >                        
-                        <p> {{ answer.content }} </p>           
+                        <p> {{ answer.content}} </p>           
                     </div>
                 </div>
         </div>
@@ -57,14 +57,14 @@ export default {
     methods: {
         ///////////////////CREATE ANSWER///////////////////// 
         createAnswer() {
-            let inputContent = {
+            let inputcontent = {
                 "content": this.content,
                 "messageId": this.messageId
             }
             let url = "http://localhost:3000/api/answers/new"
             let options = {
                 method: "POST",
-                body: JSON.stringify(inputContent),
+                body: JSON.stringify(inputcontent),
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem("token"),
                     'Content-Type': 'application/json'
@@ -88,9 +88,6 @@ export default {
 </script>
 
 <style lang="css">
-h4 {
-  text-transform: uppercase;
-}
 .blocanswer {
   width: 100%;
   margin: 0;
@@ -106,14 +103,15 @@ h4 {
 .blocanswers {
   text-align: center;
   width: 90%;
-  margin: auto;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-right:80px;
   border-radius: 30px; 
   border: 6px solid  #d44c5c;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding:10px
 }
 .blocanswers i {
   color: #0c2444;

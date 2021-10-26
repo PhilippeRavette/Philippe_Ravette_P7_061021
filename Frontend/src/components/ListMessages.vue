@@ -4,22 +4,22 @@
      <!-- Liste des messages -->   
       <div v-for="message in messages" :key="message.id" class="bloclist">
           <div class="blocauthor">
-              <h3><i class="far fa-user-circle"></i> {{ message.firstname }} {{ message.lastname }} </h3>
+              <h3><i class="far fa-user-circle"></i> {{ message.userId.firstname }} {{ message.userId.lastname }} </h3>
               <div class="blocjob">  
-                  <p><i class="fas fa-user-tie"></i> {{ message.jobtitle }} </p>  
-                  <p><i class="far fa-clock"></i> {{ message.createdAt | moment("DD.MM.YY HH:mm") }} </p>
+                  <p><i class="fas fa-user-tie mt-3"></i> {{ message.userId.jobtitle }} </p>  
+                  <p><i class="far fa-clock mt-3"></i> {{ message.createdAt | moment("DD.MM.YY HH:mm") }} </p>
               </div>
           </div>
           <div class="blocmessage">
-              <h4><i class="fas fa-angle-double-right"></i>  {{ message.title }} </h4>
-              <h5 class="pmessage"><i class="fas fa-angle-right"></i>"  {{ message.content }} "</h5>
+              <h4><i class="far fa-bookmark mt-2">  Sujet:</i> {{ message.title }} </h4>
+              <h5 class="message"><i class="far fa-envelope">  Message:</i>"  {{ message.content }} "</h5>
           </div>  
           <div class="blocactions">
                 <button v-if="message.userId == userId || isAdmin == true" 
                 type="button" @click="deleteMessage(message.id)" class="accountbutton">Supprimez </button>
           </div>
        
-        <Answers :messageId="message.id" :messageUserId="message.userId" />
+          <Answers :messageId="message.id" :messageUserId="message.userId" />
       </div>   
   </div>
 
@@ -102,7 +102,7 @@ export default {
   padding: 25px;
 }
 h4 {
-  text-transform: uppercase;
+ 
   font-size: 1.25em;
   text-decoration: underline;
    
@@ -130,7 +130,7 @@ h4 {
 }
 .blocauthor {
   width: 90%;
-  background-color: grey;
+  background-color: blue;
   margin: 0 auto;
   border-radius: 30px; 
   display: flex; 
@@ -157,8 +157,9 @@ h4 {
   font-style: italic;
 }
 h5 i, h4 i {
-  font-size: 2em;
-  color: #0c2444;
+  font-size: 1.25em;
+  color: blue;
+  margin-right:20px
 }
 @media screen and (max-width: 450px) {
 	.bloclist {

@@ -1,4 +1,3 @@
-
 const { Message } = require('../models/index');
 
 // Création d'un message //
@@ -27,7 +26,7 @@ exports.deleteMessage = (req, res, next) => {
 // Obtention d'un message //
 exports.getOneMessage = (req, res, next) => {
     Message.findByPk(req.params.id, {
-        include: ['User', 'Answers']
+            include: ['User', 'Answers']
         })
         .then(message => res.status(200).json(message))
         .catch(error => res.status(404).json({ error }));
@@ -36,8 +35,8 @@ exports.getOneMessage = (req, res, next) => {
 // Obtention des messages //
 exports.getAllMessages = (req, res, next) => {
     Message.findAll({
-        include: ['User', 'Answers']
-      })
+            include: ['User', 'Answers']
+        })
         .then((messages) => res.status(200).json(messages))
         .catch((error) => res.status(400).json({ error }));
 };
