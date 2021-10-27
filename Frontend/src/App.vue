@@ -2,7 +2,7 @@
   <div id="app">
     
     <header>
-        <img src="./assets/iconwhite.jpg" id="logoconnect" alt="Logo Groupomania" />
+       <h1> <img src="./assets/iconwhite.jpg" id="logoconnect" alt="Logo Groupomania" /></h1>
     </header>
     <router-view></router-view>
 

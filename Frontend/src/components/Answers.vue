@@ -57,14 +57,14 @@ export default {
     methods: {
         ///////////////////CREATE ANSWER///////////////////// 
         createAnswer() {
-            let inputcontent = {
+            let inputContent = {
                 "content": this.content,
                 "messageId": this.messageId
             }
             let url = "http://localhost:3000/api/answers/new"
             let options = {
                 method: "POST",
-                body: JSON.stringify(inputcontent),
+                body: JSON.stringify(inputContent),
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem("token"),
                     'Content-Type': 'application/json'
