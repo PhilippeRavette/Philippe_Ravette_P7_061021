@@ -10,8 +10,7 @@ router.post('/signup', userControl.signup);
 router.post('/login', userControl.login);
 router.delete('/:id', auth, userControl.deleteAccount);
 router.get('/:id', auth, userControl.getOneAccount);
-router.put('/:id', auth, userControl.modifyAccount);
-router.get('/accounts', userControl.getAllAccounts);
+router.put('/:id', auth, userControl.modifyAccount); //futur fonctionnalité pour l'utilisateur
+router.get('/accounts', userControl.getAllAccounts); //futur fonctionnalité pour un administrateur
 
 module.exports = router;
-
