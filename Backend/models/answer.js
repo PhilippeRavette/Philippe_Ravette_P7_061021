@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     Answer.init({
         userId: DataTypes.INTEGER,
         messageId: DataTypes.INTEGER,
-        content: DataTypes.TEXT
+        content: DataTypes.TEXT,
+        createdAt: DataTypes.DATE
     }, {
         sequelize,
         modelName: 'Answer',

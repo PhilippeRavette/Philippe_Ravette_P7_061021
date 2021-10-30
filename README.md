@@ -6,7 +6,7 @@ Votre directrice, Stéphanie, invite toute l'agence à prendre un verre pour cé
 Le client en question est Groupomania, un groupe spécialisé dans la grande distribution et l'un des plus fidèles clients de l'agence.
 
 👉 Fonctionnalités :
-Le client souhaite que ses employés écrivent et/ou partagent des articles avec leurs collègues sur des sujets qui les intéressent comme pour Reddit. 
+Le client souhaite que ses employés écrivent et/ou partagent des messages avec leurs collègues sur des sujets qui les intéressent comme pour Reddit. 
 
 👉 Technologies utilisées :
 Framework VUE js /
@@ -33,5 +33,5 @@ npm install
 nodemon server
 
 👉 Droits Administrateur
-Via mySQL, taper la commande suivante => UPDATE user SET isAdmin = 1 WHERE id = ❓ ;
+Via mySQL, taper la commande suivante => UPDATE users SET isAdmin = 1 WHERE id = ❓ ;
 ❓ => insérer le numéro du salarié concerné

@@ -8,7 +8,7 @@ exports.createAnswer = (req, res, next) => {
         content: req.body.content
     };
     Answer.create(answer)
-        .then(() => res.status(201).json({ message: "Réponse envoyée !" }))
+        .then(() => res.status(200).json({ message: "Réponse envoyée !" }))
         .catch(error => res.status(400).json({ error }));
 };
 
@@ -16,7 +16,7 @@ exports.createAnswer = (req, res, next) => {
 exports.getAllAnswers = (req, res, next) => {
     Answer.findAll({
             where: { messageId: req.params.id },
-            //include: ["user", "messages"]
+            include: ["User"]
         })
         .then((Answers) => res.status(200).json(Answers))
         .catch(error => res.status(400).json({ error }));

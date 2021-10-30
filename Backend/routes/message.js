@@ -11,7 +11,7 @@ const auth = require('../middleware/auth');
 router.post('/new', auth, messageControl.createMessage);
 router.delete('/:id', auth, messageControl.deleteMessage);
 router.get('/:id', auth, messageControl.getOneMessage);
-router.get('/', messageControl.getAllMessages);
+router.get('/', auth, messageControl.getAllMessages);
 
 
 

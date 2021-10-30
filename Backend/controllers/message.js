@@ -35,7 +35,12 @@ exports.getOneMessage = (req, res, next) => {
 // Obtention des messages //
 exports.getAllMessages = (req, res, next) => {
     Message.findAll({
-            include: ['User', 'Answers']
+            include: ['User'],
+            order: [
+                // Will escape title and validate DESC against a list of valid direction parameters
+                ['createdAt', 'DESC']
+            ],
+
         })
         .then((messages) => res.status(200).json(messages))
         .catch((error) => res.status(400).json({ error }));
