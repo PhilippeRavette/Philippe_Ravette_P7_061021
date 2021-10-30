@@ -10,7 +10,7 @@
         <!-- Liste des réponses  -->
                 <div> 
                     <div v-for="answer in answers" :key="answer.id" class="blocanswers" >                        
-                        <p> {{ answer.content}} </p>           
+                        <p> {{ answer.createdAt + answer.User.lastname + answer.content}} </p>           
                     </div>
                 </div>
         </div>
@@ -26,6 +26,7 @@ export default {
         return {
             answer: "",
             answers: [],
+            content: ""
         }
     },
     //Passer des données aux composants enfants avec les props//
@@ -72,15 +73,10 @@ export default {
             }
             fetch(url, options)
                 .then(res => res.json())
-                .then((res) => {
-                    console.log(res)
-                    if (res.ok) {
-                        this.content = {}
-                    } else {
-                        alert("Commentaire envoyé 🖅");
-                    }
+                .then(() => {
+                    this.answers.push(inputContent);
+                    this.content = "";
                 })
-                .then(window.location.reload())
                 .catch(error => console.log(error))
         }
     },

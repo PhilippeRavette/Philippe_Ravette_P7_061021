@@ -8,7 +8,7 @@
             <a target="_blank" href="https://www.lequipe.fr/">L'Equipe</a>
             <a target="_blank" href="https://www.proverbes-citations.com/">Proverbes</a>            
             <a target="_blank" href="https://www.ligue1.fr/">Ligue 1</a> 
-            <a href="mailto:admin.groupomania@groupomania.com">Contact</a>
+            <a href="mailto:moderateur.groupomania@groupomania.com">Contact</a>
            
         </nav>
 </template>
@@ -37,8 +37,7 @@ export default {
     background-color:red;
     opacity: 0.95;
     margin-top: 25px;
-    margin-right: 25px;
-}
+   }
 #bulb a {
     color: white;
     margin: auto;
@@ -62,7 +61,6 @@ color:orange}
 @media screen and (max-width: 768px) {
 	#bulb {
     height: auto;
-    width: 70%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -72,5 +70,7 @@ color:orange}
     left: 0;
     margin-top: 15px;
     }
+    
+
 }
 </style>
