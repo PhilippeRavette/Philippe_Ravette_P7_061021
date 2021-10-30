@@ -2,13 +2,13 @@
   <div id="app">
     
     <header>
-       <h1> <img src="./assets/iconwhite.jpg" id="logoconnect" alt="Logo Groupomania" /></h1>
+        <img src="./assets/icongroupomania.jpg" id="logogroupomania" alt="Logo de Groupomania" />
     </header>
     <router-view></router-view>
 
 
     
-</div>  
+  </div>  
 </template>
 
 <script>
@@ -29,7 +29,6 @@ body, html {
 }
 header {
   width: 100%;
-  height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -45,13 +44,13 @@ header a{
   margin: auto;
 }
 header img {
-  width: 30%;
+  width: 60%;
   margin: auto;
 }
 
 @media screen and (max-width: 768px) {
   header img {
-    width: 35%;
+    width: 50%;
   }
 }
 @media screen and (max-width: 450px) {
