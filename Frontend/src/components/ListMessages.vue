@@ -4,10 +4,10 @@
      <!-- Liste des messages -->   
       <div v-for="message in messages" :key="message.id" class="bloclist">
           <div class="blocauthor">
-              <h3><i class="far fa-user-circle"></i> {{ message.userId.firstname }} {{ message.userId.lastname }} </h3>
+              <h3><i class="far fa-user-circle"></i> {{ message.User.firstname}} {{ message.User.lastname }} </h3>
               <div class="blocjob">  
-                  <p><i class="fas fa-user-tie mt-3"></i> {{ message.userId.jobtitle }} </p>  
-                  <p><i class="far fa-clock mt-3"></i> {{ message.createdAt | moment("DD.MM.YY HH:mm") }} </p>
+                  <p><i class="fas fa-user-tie mt-4"></i> {{ message.User.jobtitle }} </p>  
+                  <p><i class="far fa-clock mt-4"></i> {{ message.createdAt | moment("DD.MM.YY HH:mm") }} </p>
               </div>
           </div>
           <div class="blocmessage">
@@ -32,6 +32,7 @@ export default {
     components: {
         Answers
     },
+    
 
     data() {
         return {

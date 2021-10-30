@@ -92,7 +92,12 @@ export default {
                 .catch(error => console.log(error))
         },
     },
+    
 } 
+
+//Futur fontion de modification de compte utilisateur dans une 2eme version.
+
+
 </script>
 
 <style lang="css">
