@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            this.belongsTo(models.User, { foreignKey: 'userId' });
+            //Si on supprime un user, on supprime ses messages 
+            this.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'CASCADE' });
             this.hasMany(models.Answer);
         }
     };

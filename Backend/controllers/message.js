@@ -15,7 +15,7 @@ exports.createMessage = (req, res, next) => {
 // Suppression d'un message //
 exports.deleteMessage = (req, res, next) => {
     Message.findOne({ where: { id: req.params.id } }) // On trouve l'objet dans la base de données //
-        .then((message) => {
+        .then((Message) => {
             Message.destroy({ where: { id: req.params.id } }) // Méthode //
                 .then(() => res.status(200).json({ message: 'Message supprimé' }))
                 .catch(error => res.status(400).json({ error }));

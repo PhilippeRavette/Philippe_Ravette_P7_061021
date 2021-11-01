@@ -8,7 +8,7 @@ exports.createAnswer = (req, res, next) => {
         content: req.body.content
     };
     Answer.create(answer)
-        .then(() => res.status(200).json({ message: "Réponse envoyée !" }))
+        .then(() => res.status(201).json({ message: "Réponse envoyée !" }))
         .catch(error => res.status(400).json({ error }));
 };
 

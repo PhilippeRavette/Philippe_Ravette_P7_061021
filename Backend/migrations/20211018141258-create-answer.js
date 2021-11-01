@@ -9,10 +9,21 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             userId: {
-                type: Sequelize.INTEGER
+                type: Sequelize.INTEGER,
+                references: {
+                    model: "Users",
+                    key: "id",
+                    as: "userId"
+                }
             },
             messageId: {
-                type: Sequelize.INTEGER
+                type: Sequelize.INTEGER,
+                onDelete: 'CASCADE',
+                references: {
+                    model: "Messages",
+                    key: "id",
+                    as: "messageId"
+                }
             },
             content: {
                 type: Sequelize.TEXT

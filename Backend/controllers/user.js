@@ -38,7 +38,7 @@ exports.signup = (req, res, next) => {
                             })
                             .then((user) => {
                                 console.log(user)
-                                res.status(201).json({ message: 'Utilisateur créé !' })
+                                return res.status(201).json({ message: 'Utilisateur créé !' })
                             });
                     })
                     .catch(error => res.status(400).json({ error }));
@@ -80,7 +80,7 @@ exports.login = (req, res, next) => {
 // Suppression d'un compte //
 exports.deleteAccount = (req, res, next) => {
     User.findOne({ where: { id: req.params.id } })
-        .then((user) => {
+        .then((User) => {
             User.destroy({ where: { id: req.params.id } }) // Méthode //
                 .then(() => res.status(200).json({ message: 'Compte supprimé' }))
                 .catch(error => res.status(400).json({ error }));
@@ -98,7 +98,7 @@ exports.getOneAccount = (req, res, next) => {
 // Modification d'un compte //
 exports.modifyAccount = (req, res, next) => {
     User.findOne({ where: { id: req.params.id } })
-        .then((user) => {
+        .then((User) => {
             lastname = req.body.lastname;
             firstname = req.body.firstname;
             jobtitle = req.body.jobtitle;

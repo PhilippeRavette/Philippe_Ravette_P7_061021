@@ -2,7 +2,7 @@
      
         <div class="blocsignup">
            
-            <h2>Connectez-vous et profitez des derniers messages !</h2>
+            <h1>Connectez-vous et profitez des derniers messages !</h1>
             <form v-on:submit.prevent="login" id="form-login" >
               <div class="form-group">
                 <label for="email">E-mail:</label>

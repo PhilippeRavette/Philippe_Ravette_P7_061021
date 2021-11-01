@@ -14,7 +14,7 @@
                 <textarea type="text" id="content" name="content" rows="10" class="form-control w-50" required v-model="inputMessage.content"></textarea>
               </div>
             </form>              
-             <button v-on:click="createMessage" >Envoyer</button> 
+             <button v-on:click="sendMessage" >Envoyer</button> 
           </div> 
             
      </section> 
@@ -46,7 +46,7 @@ export default {
     },
 
     methods: {
-        createMessage() {
+        sendMessage() {
             let deliverMessage = {
                 "title": this.inputMessage.title,
                 "content": this.inputMessage.content,
@@ -90,6 +90,7 @@ section {
     margin-top: 0;
     margin-bottom: 25px;
 }
+
 a {
     cursor: pointer;
 }

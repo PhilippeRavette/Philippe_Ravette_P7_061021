@@ -2,15 +2,15 @@
         <div>    
             <!-- Répondre  -->
             <div class="blocanswer">
-                <textarea type="text" id="content" name="content" rows="2" class="form-control mt-3" v-model="content"  
-                placeholder="Insérer votre nom puis votre commentaire svp..."></textarea>
+                <textarea type="text" id="content" name="content" rows="2" class="form-control mt-3" v-model="content"  aria-label="content"
+                placeholder="Insérer votre commentaire svp..."></textarea>
                 <a v-on:click="createAnswer()"><i class="far fa-paper-plane" title="Envoyer"></i></a>          
             </div>
 
         <!-- Liste des réponses  -->
                 <div> 
                     <div v-for="answer in answers" :key="answer.id" class="blocanswers" >                        
-                        <p> {{ answer.createdAt + answer.User.lastname + answer.content}} </p>           
+                        <p class="text-success">  {{ answer.User.firstname}} {{ answer.User.lastname}} {{answer.createdAt | moment("DD.MM.YY HH:mm")}} <br>  {{ answer.content}} </p>          
                     </div>
                 </div>
         </div>
@@ -27,13 +27,15 @@ export default {
             answer: "",
             answers: [],
             content: ""
+                              
         }
     },
     //Passer des données aux composants enfants avec les props//
     props: {
         messageId: Number,
-        messageUserId: Number,
+        messageUserId: Number,        
     },
+    
     mounted() {
         ///////////////////GET ANSWERS/////////////////////
         let url = "http://localhost:3000/api/answers/" + this.messageId + "/display";
@@ -49,7 +51,7 @@ export default {
                 console.log(data)
                 this.answers = data;
                 console.log(this.answers)
-
+                
             })
             .catch(error => console.log(error))
     },
@@ -61,6 +63,7 @@ export default {
             let inputContent = {
                 "content": this.content,
                 "messageId": this.messageId
+               
             }
             let url = "http://localhost:3000/api/answers/new"
             let options = {
@@ -114,6 +117,7 @@ export default {
 }
 .blocanswers p {
   font-style: italic;
+  font-size:20px;
 }
 .blocanswer i {
   color: white;
