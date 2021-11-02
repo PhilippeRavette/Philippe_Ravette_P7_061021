@@ -130,4 +130,10 @@ export default {
   border-color: white;
   box-shadow: 0px 0px 20px grey;
 }
+@media screen and (max-width: 765px) {
+.blocanswers {
+  width: 102%;
+  }
+}
+
 </style>

@@ -5,31 +5,31 @@
             <form v-on:submit.prevent="signup" id="form-signup" >
               <div class="form-group">
                 <label for="lastname">Nom :</label>
-                <input type="text" id="lastname" name="lastname" class="form-control w-50" required 
+                <input type="text" id="lastname" name="lastname" class="form-control" required 
                 pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="inputSignup.lastname"/>
               </div>
               <div class="form-group">
                 <label for="firstname">Prénom :</label>
-                <input type="text" id="firstname" name="firstname" class="form-control w-50" required 
+                <input type="text" id="firstname" name="firstname" class="form-control" required 
                 pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="inputSignup.firstname"/>
               </div>
               <div class="form-group">
                 <label for="jobtitle">Fonction :</label>
-                <input type="text" id="jobtitle" name="jobtitle" class="form-control w-50" required
+                <input type="text" id="jobtitle" name="jobtitle" class="form-control" required
                 pattern="^[^&amp;<>@&quot;()'!_$*€£`+=\/;?#]+$" v-model="inputSignup.jobtitle"/>
               </div> 
               <div class="form-group">
                 <label for="email">E-mail :</label>
-                <input type="email" id="email" name="email" class="form-control w-50" required 
+                <input type="email" id="email" name="email" class="form-control" required 
                 pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+.[a-zA-Z.]{2,15}" v-model="inputSignup.email"/>
               </div>
               <div class="form-group">
                 <label for="password">⚠️ Mot de passe :</label>
-                <input type="password" id="password" name="password" class="form-control w-50" required
+                <input type="password" id="password" name="password" class="form-control" required
                 pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" v-model="inputSignup.password"/>
               </div>  
               <p>⚠️ Minimum 8 caractères dont 1 Majuscule, 1 minuscule et un chiffre</p>
-              <button>S' Enregistrer</button>                                       
+              <button>Enregistrer</button>                                       
             </form> 
              
               <nav class="navlogsign"><p>Vous avez déjà un compte ? <router-link to="/">Connectez-vous</router-link></p></nav> 
@@ -172,14 +172,21 @@ input:focus, textarea:focus {
 .navlogsign a:hover, .navlogsign a:focus {
   color: orange;
 }
+
+#lastname, #firstname, #email, #password,#jobtitle {
+  width: 50%;
+  text-align: center;
+  }
+
 @media screen and (max-width: 768px) {
     .blocsignup {
       width: 80%; 
   }
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 765px) {
 	.blocsignup {
-  width: 90%; 
+  width: 90%;
+  height:110%; 
   box-shadow: inset 0px 0px 0px 8px white;
   border: 5px solid #d44c5c;
   font-size: 0.7em;
@@ -189,9 +196,15 @@ input:focus, textarea:focus {
   flex-direction: column;
    
  }
-label, input, textarea {
-  width: 75%;
+#lastname, #firstname, #email, #password,#jobtitle {
+  width: 80%;
   text-align: center;
+  }
+
+  .blocsignup p{font-size: 1.5em}
+
+  button {
+  width: 60%;
   }
 }
 </style>

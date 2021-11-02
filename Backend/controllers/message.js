@@ -23,14 +23,6 @@ exports.deleteMessage = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 };
 
-// Obtention d'un message //
-exports.getOneMessage = (req, res, next) => {
-    Message.findByPk(req.params.id, {
-            include: ['User', 'Answers']
-        })
-        .then(message => res.status(200).json(message))
-        .catch(error => res.status(404).json({ error }));
-};
 
 // Obtention des messages //
 exports.getAllMessages = (req, res, next) => {
@@ -44,4 +36,13 @@ exports.getAllMessages = (req, res, next) => {
         })
         .then((messages) => res.status(200).json(messages))
         .catch((error) => res.status(400).json({ error }));
+};
+
+// Futur fonctionnalité d'obtention d'un message //
+exports.getOneMessage = (req, res, next) => {
+    Message.findByPk(req.params.id, {
+            include: ['User', 'Answers']
+        })
+        .then(message => res.status(200).json(message))
+        .catch(error => res.status(404).json({ error }));
 };

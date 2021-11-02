@@ -6,8 +6,8 @@
           <div class="blocauthor">
               <h3><i class="far fa-user-circle"></i> {{ message.User.firstname}} {{ message.User.lastname }} </h3>
               <div class="blocjob">  
-                  <p><i class="fas fa-user-tie mt-4"></i> {{ message.User.jobtitle }} </p>  
-                  <p><i class="far fa-clock mt-4"></i> {{ message.createdAt | moment("DD.MM.YY HH:mm") }} </p>
+                  <p><i class="fas fa-user-tie mt-4 sm-mr-1"></i>   {{ message.User.jobtitle }} </p>  
+                  <p><i class="far fa-clock mt-4"></i>  {{ message.createdAt | moment("DD.MM.YY HH:mm") }} </p>
               </div>
           </div>
           <div class="blocmessage">
@@ -116,6 +116,11 @@ h4 {
   justify-content: space-around;
   
 }
+
+.blocjob p{
+  font-size:1.5em;
+  }
+
 .blocauthor i {
   color: #0c2444;
   font-size: 1.75em;
@@ -130,9 +135,8 @@ h4 {
   margin-bottom: 10px;
 }
 .blocauthor {
-  width: 90%;
+  width: 100%;
   background-color: blue;
-  margin: 0 auto;
   border-radius: 30px; 
   display: flex; 
   flex-direction: row;
@@ -141,13 +145,13 @@ h4 {
   color: white;
 }
 .blocauthor h3 {
-  font-size: 1.5em;
+  font-size: 1.75em;
   margin: auto;
   padding-left: 15px;
   width: 50%;
 }
 .blocmessage {
-  width: 95%;
+  width: 100%;
   margin-top:20px;
   border-radius: 30px; 
   border: 6px solid grey;
@@ -162,21 +166,39 @@ h5 i, h4 i {
   color: blue;
   margin-right:20px
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 765px) {
 	.bloclist {
     width: 90%; 
     box-shadow: inset 0px 0px 0px 8px white;
     border: 5px solid #d44c5c;
-    font-size: 0.7em;
+    font-size: 0.9em;
   }
   .form-group {
     display: flex;
     flex-direction: column;
-    
-  }
+      }
+
   label, input, textarea {
     width: 75%;
     text-align: center;
   }
+
+  .message {margin-right:10px;
+  } 
+
+  .blocjob {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+ }
+
+ .blocauthor {
+  font-size: 0.7em;
+  margin: auto;
+  padding-left: 30px;
+  width:103%;
+   }
+   .blocauthor i {margin-left:-26px}
+
 }
 </style>

@@ -7,11 +7,11 @@
             <form id="form-signup" >
               <div class="form-group">
                 <label for="title">Titre du message :</label>
-                <input type="text" id="title" name="title" class="form-control w-50" required v-model="inputMessage.title"/>
+                <input type="text" id="title" name="title" class="form-control" required v-model="inputMessage.title"/>
               </div>
               <div class="form-group">
                 <label for="content">Contenu :</label>
-                <textarea type="text" id="content" name="content" rows="10" class="form-control w-50" required v-model="inputMessage.content"></textarea>
+                <textarea type="text" id="content" name="content" rows="10" class="form-control" required v-model="inputMessage.content"></textarea>
               </div>
             </form>              
              <button v-on:click="sendMessage" >Envoyer</button> 
@@ -98,11 +98,20 @@ textarea {
     height: auto;
     resize:none;
 }
+
+#content{width:50%}
+
+#title{width:50%}
+
 @media screen and (max-width: 768px) {
 	section {
     flex-direction: column;
     margin-top: 25px;
 }
+#content{width:80%}
+
+#title{width:80%}
+
 }
 
 </style>

@@ -22,14 +22,14 @@ exports.getAllAnswers = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 };
 
-// Obtention d'une réponse //
+// Futur fonctionnalité d'obtention d'une réponse //
 exports.getOneAnswer = (req, res, next) => {
     Answer.findOne({ where: { id: req.params.id } })
         .then((Answer) => res.status(200).json(Answer))
         .catch(error => res.status(404).json({ error }));
 };
 
-// Suppression d'une réponse //
+// Futur fonctionnalité de suppression d'une réponse //
 exports.deleteAnswer = (req, res, next) => {
     Answer.findOne({ where: { id: req.params.id } }) // On trouve l'objet dans la base de données //
         .then((Answer) => {
