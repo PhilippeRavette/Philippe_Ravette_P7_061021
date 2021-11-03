@@ -9,6 +9,7 @@ module.exports = {
                 type: Sequelize.INTEGER,
             },
             userId: {
+                allowNull: false,
                 type: Sequelize.INTEGER,
                 onDelete: 'CASCADE',
                 references: {
@@ -18,11 +19,17 @@ module.exports = {
                 }
             },
             title: {
+                allowNull: false,
                 type: Sequelize.STRING
             },
             content: {
+                allowNull: false,
                 type: Sequelize.TEXT
             },
+            //image: {
+            //  allowNull: false,
+            //  type: Sequelize.TEXT
+            //},
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

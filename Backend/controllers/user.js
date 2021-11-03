@@ -45,7 +45,7 @@ exports.signup = (req, res, next) => {
             }
         })
 
-    .catch(error => res.status(500).json({ 'error': 'Utilisateur déjà existant' }));
+    .catch(error => res.status(500).json({ error: 'Utilisateur déjà existant' }));
 };
 
 // Fonction login //
@@ -88,7 +88,7 @@ exports.deleteAccount = (req, res, next) => {
         .catch(error => res.status(500).json({ error }));
 };
 
-// Futur fonctionnalité d'obtention d'un compte //
+// Obtention d'un compte //
 exports.getOneAccount = (req, res, next) => {
     User.findOne({ where: { id: req.params.id } })
         .then((user) => res.status(200).json(user))

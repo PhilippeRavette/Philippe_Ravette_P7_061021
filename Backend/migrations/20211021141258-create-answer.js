@@ -9,6 +9,7 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             userId: {
+                allowNull: false,
                 type: Sequelize.INTEGER,
                 onDelete: 'CASCADE',
                 references: {
@@ -18,6 +19,7 @@ module.exports = {
                 }
             },
             messageId: {
+                allowNull: false,
                 type: Sequelize.INTEGER,
                 onDelete: 'CASCADE',
                 references: {
@@ -27,6 +29,7 @@ module.exports = {
                 }
             },
             content: {
+                allowNull: false,
                 type: Sequelize.TEXT
             },
             createdAt: {
