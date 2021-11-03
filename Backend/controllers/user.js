@@ -42,7 +42,11 @@ exports.signup = (req, res, next) => {
                             });
                     })
                     .catch(error => res.status(400).json({ error }));
+            } else {
+                return res.status(400).json({ error: 'Utilisateur déjà existant' });
+
             }
+
         })
 
     .catch(error => res.status(500).json({ error: 'Utilisateur déjà existant' }));

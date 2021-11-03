@@ -77,8 +77,9 @@ export default {
             fetch(url, options)
                 .then(res => res.json())
                 .then(() => {
-                    this.answers.push(inputContent);
-                    this.content = "";
+                window.location.reload();
+                // this.answers.push(inputContent);
+                this.content = "";
                 })
                 .catch(error => console.log(error))
         }

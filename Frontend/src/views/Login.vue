@@ -59,7 +59,7 @@ export default {
                         this.$router.push("message");
                         alert(" 🙋‍♂️ Bienvenue sur le réseau social de Groupomania! Connectez-vous dès à présent ! 🙋‍♀️");
                     } else {
-                        alert(" 🚨 Mot de passe incorrect ! ");
+                        alert(" 🚨 Mot de passe ou utilisateur incorrect! ");
                     }
                 })
                 .catch(error => console.log(error))
