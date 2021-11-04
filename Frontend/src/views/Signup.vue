@@ -38,10 +38,8 @@
 
 
 <script>
-
 export default {
     name: 'Signup',
-
     data() {
         return {
             inputSignup: {
@@ -75,10 +73,7 @@ export default {
             fetch(url, options)
                 .then(res => res.json())
                 .then((res) => {
-                    if (res.userId && res.token){
-                    localStorage.setItem("userId", res.userId);
-                    localStorage.setItem("token", res.token);
-                    console.log(localStorage)
+                    if (res.message){
                     this.$router.push("/");
                     alert(" 🙋‍♂️ Bienvenue sur le réseau social de Groupomania ! Connectez-vous dès à présent ! 🙋‍♀️");
                     } 
@@ -87,7 +82,6 @@ export default {
                     alert(" 🚨 Utilsateur déjà existant! ");
                     }
                 })
-
                 .catch(() => alert(" 🚨 Utilsateur déjà existant! "))
         }
     }
