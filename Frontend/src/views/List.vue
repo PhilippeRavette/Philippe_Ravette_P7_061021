@@ -3,7 +3,7 @@
         <Navbar></Navbar>
         
           <div class="blocsignup">
-			<h1>"Profitons de notre maginifique réseau social pour améliorer notre communication."</h1> 
+			<h1>"Profitons de notre magnifique réseau social pour améliorer notre communication."</h1> 
                             
           </div> 
 
